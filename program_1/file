@@ -1,0 +1,10 @@
+Enter the input set {number, radix, operand size}:
+-6, 10, 4
+                       	Value             	Maximum           	Minimum           
+Binary(abs)            	0b0110            	0b1111            	0b0000            	
+Octal(abs)             	06                	017               	0                 
+Decimal(abs)           	6                 	15                	0                 
+Hexadecimal(abs)       	0x6               	0xf               	0                 
+Signed One's Complement	0b1001            	0b0111            	0b1000            	
+Signed Two's Complement	0b1010            	0b0111            	0b1001            	
+Sign-Magnitude         	0b1110            	0b0111            	0b1111            	
