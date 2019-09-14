@@ -140,10 +140,9 @@ int proc_input(struct input line)
 
 void print_output(struct input line)
 {
-        static char c[20];
 	int x = abs((int)line.num);
 	printf("\tValue\tMaximum\tMinimum\n");
-	printf("Binary(abs) %s %s %s\n", binary_input(x), binary_input(MAX_4), binary_input(MIN_4));
+	printf("Binary(abs) %s %s %s\n", binary_print(x), binary_print(MAX_4), binary_print(MIN_4));
 	printf("Octal(abs) %#o %#o %#o\n", x, MAX_8, MIN_8);
 	printf("Decimal(abs)%d %d %d\n", x, MAX_16, MIN_16);
 	printf("Hexadecimal(abs) %#x %#x %#x\n", x, MAX_4, MIN_4);
@@ -152,7 +151,7 @@ void print_output(struct input line)
 //	printf("Sign-Magnitude\t\t\t\t0b1111111111111111\t0b1111111111111111\t0b1111111111111111\n");
 }
 
-char* binary_print(uint16_t binary, uint8_t digits)
+char * binary_print(uint16_t binary, uint8_t digits)
 {
         c[0] = '0';
         c[1] = 'b';
