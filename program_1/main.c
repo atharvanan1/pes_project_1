@@ -1,9 +1,9 @@
-/* * * * * * * * * * * * * * * * * * * * * * * *
+/************************************************
  * File - program_1.c				*
  * Name - Atharva Nandanwar			*
  * Email - atharva.nandanwar@colorado.edu	*
  * Date - 09-14-2019				*
- * * * * * * * * * * * * * * * * * * * * * * * */
+ ************************************************/
 
 /* Includes */
 #include<stdio.h>
