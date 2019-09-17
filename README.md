@@ -9,6 +9,8 @@ Contents:
 
 To run each program, on Linux - ./script.sh - this will compile a fresh copy, put the output in ProgramXXX.out file, and print the output on the screen for others to see. On Windows - use a compiler to compile main.c files, and then execute the compiled file.
 
+All files are compiled using `gcc -std=c99 -Wall -Werror -o prog_name prog_name.c`.
+
 ---
 
 **Feel free to highlight any errors and style guide changes.**
