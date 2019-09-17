@@ -1,8 +1,9 @@
 /************************************************
- * File - program_1.c                           *
+ * File - program_3.c                           *
  * Name - Atharva Nandanwar                     *
  * Email - atharva.nandanwar@colorado.edu       *
- * Date - 09-14-2019                            *
+ * Date - 09-17-2019                            *
+ * Compiler - gcc std=c99                       *
  ************************************************/
 
 /* Header files */
