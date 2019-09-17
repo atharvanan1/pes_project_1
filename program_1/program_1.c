@@ -5,7 +5,7 @@
  * Date - 09-14-2019				*
  ************************************************/
 
-/* Includes */
+/* Header files */
 #include<stdio.h>
 #include<stdint.h>
 #include<stdlib.h>
@@ -19,7 +19,7 @@ struct input
     int32_t num;
     uint8_t radix;
     uint8_t op_size;
-} line;
+} line[11];
 // MAX and MIN values - to be used in program in place of 
 // macros
 const uint16_t MAX = 0xFFFF;
@@ -28,6 +28,7 @@ const uint16_t MIN = 0x0000;
 /* Function Declarations */
 // Scroll down for function descriptions to understand 
 // more about them
+uint8_t error_check(struct input);
 void binary_print(uint16_t, uint8_t);
 void print_output(struct input);
 uint16_t onescomplement(uint16_t, uint8_t);
@@ -35,83 +36,81 @@ uint16_t twoscomplement(uint16_t, uint8_t);
 uint16_t signmagnitude(uint16_t, uint8_t);
 
 /****************************************************************
- * Main function - used for taking inputs, check them, and call *
- * print function.                                              *
+ * Main function - used for making an array of input sets,      *
+ * check them for errors, and call print function.              *
  * Name - main                                                  *
  * Parameters - void                                            *
  * Return - int                                                 *
  ****************************************************************/
 int main (void)
 {
-    /* Variables used:                                  *
-     * line_input = a buffer to hold the input line     *
-     * c = used to hold characters from getchar	        *
-     * i = used for indexing through line_input array   *
-     * scan_check = used to find value format and radix *
-     * mismatch                                         */
-    char line_input[20];
-    uint8_t c, i = 0, scan_check;
+    /* Making a const array to hold all the values that require *
+     * checking.                                                */
+    const int32_t array[11][3] = {{-6, 10, 4}, {-6, 9, 4},\
+            {-6, 10, 5}, {-9, 10, 4}, {237, 10, 8}, {0354, 8, 8},\
+            {0xEB, 16, 8}, {-125, 10, 8}, {65400, 10, 8},\
+            {65400, 10, 16}, {-32701, 10, 16}};
 
-    // Prompting user to enter input
-    printf("Enter the input set {number, radix, operand size}:\n");
-
-    /* Getting data from stdin using getchar(). 		*
-     * Citation (Book) - The C Programming Language by	*
-     * Brian Kernighan & Dennis M. Ritchie, Page 16 (2nd Ed)*/
-    while ((c = getchar()) != '\n')
+    // Putting all values in a structure that enables modularity
+    for (int i = 0; i < 11; i++)
     {
-        line_input[i] = c;
-        i++;
+	    line[i].num = array[i][0];
+	    line[i].radix = array[i][1];
+	    line[i].op_size = array[i][2];
     }
-    // Terminating the line_input array when there is new line
-    line_input[i] = '\0';
-    printf("%s\n", line_input);
 
-    // Scanning line_input for predefinited pattern 
-    // Citation - 
-    // https://medium.com/@zoha131/fun-with-scanf-in-c-3d7a8d310229
-    // Used above link to read scanf format specifiers
-    sscanf(line_input, "{%*[^ ]%hhu, %hhu}", \
-           &line.radix, &line.op_size);
+    /* Print the input set, check if there are errors. If       *
+     * errors, then skip to next iteration of loop. If not,     *
+     * then print the output that's desired.			*/
+    for (int i = 0; i < 11; i++)
+    {
+        printf("{%d, %hhu, %hhu}\n", line[i].num, line[i].radix, line[i].op_size);
+        if (error_check(line[i]))
+	{
+	    continue;
+	}
+	else
+	{
+	    print_output(line[i]);
+            // Indicator to tell that program run has ended
+            printf("--------------END-OF-SEQUENCE---------------\n");
+        }
+    }
 
+    return 0;
+}
+
+/****************************************************************
+ * Error Check function - Checks for erros in values of input   *
+ * set                                                          *
+ * Name - error_check                                           *
+ * Parameters -                                                 *
+ * struct input line - passing structure consisting of input    *
+ * set values                                                   *
+ * Return - uint8_t                                             *
+ ****************************************************************/
+uint8_t error_check(struct input line)
+{
     /* Radix check to get proper representation as input	*
-     * in line.num element of structure input. Pops up 	*
-     * error at invalid radix.				*/
-    if (line.radix == 8)
-    {
-        scan_check = sscanf(line_input, "{%o, *}", &line.num);
-    }
-    else if (line.radix == 10)
-    {
-        scan_check = sscanf(line_input, "{%d, *}", &line.num);
-    }
-    else if (line.radix == 16)
-    {
-        scan_check = sscanf(line_input, "{%x, *}", &line.num);
-    }
-    else
+     * in line.num element of structure input. Pops up 	        *
+     * error at invalid radix, and returns 1.                   */
+    if (line.radix != 8 \
+        && line.radix != 10 \
+	&& line.radix != 16)
     {
         printf("Error: Invalid radix\n");
-        printf("--------------END-OF-PROGRAM---------------\n");
+        printf("--------------END-OF-SEQUENCE---------------\n");
         return 1;
     }
 
-    /* Scan check if there is any mismatch between radix	*
-     * and number format.					*/
-    if (scan_check == 0)
-    {
-        printf("Error: Radix and number format mismatch\n");
-        printf("--------------END-OF-PROGRAM---------------\n");
-        return 1;
-    }
-
-    /* Check for valid operand size */
+    /* Check for valid operand size. Pops up error at invalid   *
+     * operand size, and returns 1.                             */
     if (line.op_size != 4 \
         && line.op_size != 8 \
         && line.op_size != 16)
     {
         printf("Error: Invalid operand size\n");
-        printf("--------------END-OF-PROGRAM---------------\n");
+        printf("--------------END-OF-SEQUENCE---------------\n");
         return 1;
     }
 
@@ -125,15 +124,10 @@ int main (void)
         || (line.num < (((0xFFFF >> (16 - line.op_size))) * -1)))
     {
         printf("Error: Value too large for operand size.\n");
-        printf("--------------END-OF-PROGRAM---------------\n");
+        printf("--------------END-OF-SEQUENCE---------------\n");
         return 1;
     }
-		
-    // Calling the function which handles output printing
-    print_output(line);
-    // Indicator to tell that program run has ended
-    printf("--------------END-OF-PROGRAM---------------\n");
-
+	
     return 0;
 }
 

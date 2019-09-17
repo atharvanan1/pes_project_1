@@ -1,4 +1,3 @@
-Enter the input set {number, radix, operand size}:
 {-6, 10, 4}
                        	Value             	Maximum           	Minimum           
 Binary(abs)            	0b0110            	0b1111            	0b0000            	
@@ -8,16 +7,13 @@ Hexadecimal(abs)       	0x6               	0xf               	0
 Signed One's Complement	0b1001            	0b0111            	0b1000            	
 Signed Two's Complement	0b1010            	0b0111            	0b1001            	
 Sign-Magnitude         	0b1110            	0b0111            	0b1111            	
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
+--------------END-OF-SEQUENCE---------------
 {-6, 9, 4}
 Error: Invalid radix
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
+--------------END-OF-SEQUENCE---------------
 {-6, 10, 5}
 Error: Invalid operand size
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
+--------------END-OF-SEQUENCE---------------
 {-9, 10, 4}
                        	Value             	Maximum           	Minimum           
 Binary(abs)            	0b1001            	0b1111            	0b0000            	
@@ -27,8 +23,7 @@ Hexadecimal(abs)       	0x9               	0xf               	0
 Signed One's Complement	Error                  	0b0111            	0b1000            	
 Signed Two's Complement	Error                  	0b0111            	0b1001            	
 Sign-Magnitude         	Error                  	0b0111            	0b1111            	
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
+--------------END-OF-SEQUENCE---------------
 {237, 10, 8}
                        	Value             	Maximum           	Minimum           
 Binary(abs)            	0b11101101        	0b11111111        	0b00000000        	
@@ -38,9 +33,8 @@ Hexadecimal(abs)       	0xed              	0xff              	0
 Signed One's Complement	Error                  	0b01111111        	0b10000000        	
 Signed Two's Complement	Error                  	0b01111111        	0b10000001        	
 Sign-Magnitude         	Error                  	0b01111111        	0b11111111        	
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
-{0354, 8, 8}
+--------------END-OF-SEQUENCE---------------
+{236, 8, 8}
                        	Value             	Maximum           	Minimum           
 Binary(abs)            	0b11101100        	0b11111111        	0b00000000        	
 Octal(abs)             	0354              	0377              	0                 
@@ -49,9 +43,8 @@ Hexadecimal(abs)       	0xec              	0xff              	0
 Signed One's Complement	Error                  	0b01111111        	0b10000000        	
 Signed Two's Complement	Error                  	0b01111111        	0b10000001        	
 Sign-Magnitude         	Error                  	0b01111111        	0b11111111        	
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
-{0xEB, 16, 8}
+--------------END-OF-SEQUENCE---------------
+{235, 16, 8}
                        	Value             	Maximum           	Minimum           
 Binary(abs)            	0b11101011        	0b11111111        	0b00000000        	
 Octal(abs)             	0353              	0377              	0                 
@@ -60,8 +53,7 @@ Hexadecimal(abs)       	0xeb              	0xff              	0
 Signed One's Complement	Error                  	0b01111111        	0b10000000        	
 Signed Two's Complement	Error                  	0b01111111        	0b10000001        	
 Sign-Magnitude         	Error                  	0b01111111        	0b11111111        	
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
+--------------END-OF-SEQUENCE---------------
 {-125, 10, 8}
                        	Value             	Maximum           	Minimum           
 Binary(abs)            	0b01111101        	0b11111111        	0b00000000        	
@@ -71,23 +63,20 @@ Hexadecimal(abs)       	0x7d              	0xff              	0
 Signed One's Complement	0b10000010        	0b01111111        	0b10000000        	
 Signed Two's Complement	0b10000011        	0b01111111        	0b10000001        	
 Sign-Magnitude         	0b11111101        	0b01111111        	0b11111111        	
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
+--------------END-OF-SEQUENCE---------------
 {65400, 10, 8}
 Error: Value too large for operand size.
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
+--------------END-OF-SEQUENCE---------------
 {65400, 10, 16}
                        	Value             	Maximum           	Minimum           
-Binary(abs)            	0b0000000010001000	0b1111111111111111	0b0000000000000000	
-Octal(abs)             	0210              	0177777           	0                 
-Decimal(abs)           	136               	65535             	0                 
-Hexadecimal(abs)       	0x88              	0xffff            	0                 
-Signed One's Complement	0b1111111101110111	0b0111111111111111	0b1000000000000000	
-Signed Two's Complement	0b1111111101111000	0b0111111111111111	0b1000000000000001	
-Sign-Magnitude         	0b1000000010001000	0b0111111111111111	0b1111111111111111	
---------------END-OF-PROGRAM---------------
-Enter the input set {number, radix, operand size}:
+Binary(abs)            	0b1111111101111000	0b1111111111111111	0b0000000000000000	
+Octal(abs)             	0177570           	0177777           	0                 
+Decimal(abs)           	65400             	65535             	0                 
+Hexadecimal(abs)       	0xff78            	0xffff            	0                 
+Signed One's Complement	Error                  	0b0111111111111111	0b1000000000000000	
+Signed Two's Complement	Error                  	0b0111111111111111	0b1000000000000001	
+Sign-Magnitude         	Error                  	0b0111111111111111	0b1111111111111111	
+--------------END-OF-SEQUENCE---------------
 {-32701, 10, 16}
                        	Value             	Maximum           	Minimum           
 Binary(abs)            	0b0111111110111101	0b1111111111111111	0b0000000000000000	
@@ -97,4 +86,4 @@ Hexadecimal(abs)       	0x7fbd            	0xffff            	0
 Signed One's Complement	0b1000000001000010	0b0111111111111111	0b1000000000000000	
 Signed Two's Complement	0b1000000001000011	0b0111111111111111	0b1000000000000001	
 Sign-Magnitude         	0b1111111110111101	0b0111111111111111	0b1111111111111111	
---------------END-OF-PROGRAM---------------
+--------------END-OF-SEQUENCE---------------
